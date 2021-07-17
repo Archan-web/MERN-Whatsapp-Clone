@@ -5,7 +5,8 @@ import ChatIcon from '@material-ui/icons/Chat';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import SearchIcon from '@material-ui/icons/Search';
 import { Avatar, IconButton } from '@material-ui/core';
-import Chats from './Chats';
+import Users from './Users';
+import Chat from './Chat';
 
 function Home() {
     return (
@@ -29,16 +30,21 @@ function Home() {
                 </div>
                 <div className="search">
                     <SearchIcon/>
-                    <input type="text"/>
+                    <input type="text" placeholder="Search..."/>
                 </div>
                 <div className="sidebarChats">
-                    <Chats/>
-                    <Chats/>
-                    <Chats/>
-                    <Chats/>
+                    <Users/>
+                    <Users/>
+                    <Users/>
+                    <Users/>
+                    <Users/>
+                    <Users/>
+                    <Users/>
                 </div>
             </div>
-            <div className="chatdetails">We are chat details</div>
+            <div className="each-chat">
+                <Chat/>
+            </div>
         </div>
     )
 }

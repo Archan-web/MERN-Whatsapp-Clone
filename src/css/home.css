@@ -1,6 +1,7 @@
 *{
     margin: 0px;
     padding: 0px;
+    overflow-x: hidden;
 }
 .home{
     width:94vw;
@@ -17,6 +18,7 @@
     flex-direction: column;
     flex: 0.35;
     background-color: rgb(231, 229, 229);
+    min-width: max-content;
 }
 .icons{
     display: flex;
@@ -26,10 +28,10 @@
     border-right:1px solid rgb(185, 182, 182);
     align-items: center;
 }
-.chatdetails{
+.each-chat{
     display: flex;
     flex-direction: column;
-    flex:0.65;
+    flex:0.64;
 }
 .search{
     background: white;
@@ -45,4 +47,15 @@
 .search>input{
     margin-left: 8px;
     width: 90%;
+    border: none;
+    font-size: 1.1rem;
+}
+.search>input:focus{
+    outline: none;
+}
+.sidebarChats{
+    background-color: white;
+    min-height: 72vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }

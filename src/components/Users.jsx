@@ -1,11 +1,11 @@
 import { Avatar } from '@material-ui/core'
 import React from 'react'
-import '../css/chats.css';
+import '../css/users.css';
 
-function Chats() {
+function Users() {
     return (
         <div className="chats">
-            <Avatar />
+            <Avatar style={{marginLeft:"20px",marginBottom:"4px"}}/>
             <div className="chat-texts">
                 <h2>Chat room</h2>
                 <p>This is the last message.</p>
@@ -14,4 +14,4 @@ function Chats() {
     )
 }
 
-export default Chats
+export default Users

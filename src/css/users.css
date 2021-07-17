@@ -1,13 +1,17 @@
 .chats{
     display: flex;
-    width: 98%;
+    width: 96%;
     height: 60px;
     border-bottom: 1px solid rgb(185, 182, 182);
     align-items: center;
     margin: 6px;
     left: 0;
-    margin-left: 24px;
+}
+.chats:hover{
+    background-color: lightgray;
+    cursor: pointer;
 }
 .chat-texts{
     margin-left: 20px;
+    margin-bottom: 4px;
 }
