@@ -1,0 +1,48 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+.home{
+    width:94vw;
+    height: 94vh;
+    box-shadow: 4px 4px 4px 4px black;
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    margin-top: 20px;
+    background-color: lightgray;
+}
+.sidebar{
+    display: flex;
+    flex-direction: column;
+    flex: 0.35;
+    background-color: rgb(231, 229, 229);
+}
+.icons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: lightgray;
+    border-right:1px solid rgb(185, 182, 182);
+    align-items: center;
+}
+.chatdetails{
+    display: flex;
+    flex-direction: column;
+    flex:0.65;
+}
+.search{
+    background: white;
+    display: flex;
+    width: 88%;
+    height: 4%;
+    padding:6px;
+    justify-content: center;
+    margin: 20px auto;
+    border: 1px solid white;
+    border-radius: 40px;
+}
+.search>input{
+    margin-left: 8px;
+    width: 90%;
+}
