@@ -3,7 +3,7 @@
     width: 100%;
     height: fit-content;
     align-items: center;
-    padding: 6px;
+    padding: 4px;
     border-bottom: 1px solid rgb(185, 182, 182);
 }
 .chat-details{
@@ -11,6 +11,7 @@
     flex-direction: column;
     flex: 1;
     margin-left: 40px;
+    margin-bottom: 6px;
 
 }
 .chat-messages{
@@ -19,13 +20,13 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-blend-mode: multiply;
-    min-height: 78vh;
-    height: 78vh;
+    min-height: 76vh;
+    height: 76vh;
     overflow-y: scroll;
     overflow-x: hidden;
 }
 .received-message{
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.493);
     width: 60%;
     display: flex;
     flex-direction: column;
@@ -57,4 +58,37 @@
 .chat-message{
     font-size: 14px;
     margin-left: 6px;
+}
+.send-message-div{
+    display: flex;
+    height: 7vh;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 2px;
+}
+.message-input{
+    width:80%;
+    height: 60%;
+    border:1px solid white;
+    border-radius: 40px;
+    font-size: 1.2rem;
+    padding: 6px 10px;
+    margin-bottom: 2.5px;
+}
+.message-input:focus{
+    outline: none;
+}
+.message-btn{
+    margin-right: 20px;
+    color: white !important;
+    background-color: rgb(0, 66, 0) !important;
+    padding: 6px !important;
+    border: 1px solid rgb(0, 66, 0);
+    border-radius: 50%;
+}
+.message-btn:hover{
+    background-color: rgb(0, 90, 0) !important;
+    border: 1px solid rgb(0,90,0);
+    cursor: pointer;
 }

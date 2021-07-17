@@ -14,7 +14,7 @@ function Home() {
             <div className="sidebar">
                 <div className="icons">
                     <IconButton>
-                    <Avatar src="https://i.pinimg.com/originals/73/16/f5/7316f550de9ca0045e3d8d98a5bb5e44.png" style={{marginLeft:"16px"}}/>
+                    <Avatar src="https://i.pinimg.com/originals/73/16/f5/7316f550de9ca0045e3d8d98a5bb5e44.png"/>
                         </IconButton>
                     <div className="wpicons">
                         <IconButton>
