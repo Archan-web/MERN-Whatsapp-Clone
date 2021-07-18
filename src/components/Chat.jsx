@@ -11,7 +11,8 @@ import '../css/chat.css';
 function Chat({ messages }) {
     const [input,setInput]=useState("");
 
-    const sendMessage=async(req,res)=>{
+    const sendMessage=async(e)=>{
+        e.preventDefault();
         try {
             if(input.trim()===""){
                 window.alert("Don't leave the input field empty!");
@@ -31,12 +32,12 @@ function Chat({ messages }) {
                     },
                     config
                 )
-                setInput("");
             }
         } catch (error) {
             console.log(error);
             window.alert(`Something went wrong!`);
         }
+        setInput("");
     }
 
     return (
@@ -75,8 +76,8 @@ function Chat({ messages }) {
             </div>
             <form className="send-message-div">
                 <InsertEmoticonIcon style={{ marginLeft: "20px", color: "gray" }} />
-                <input type="text" className="message-input" placeholder="Type a message" onChange={(e)=>{setInput(e.target.value)}}/>
-                <button type="submit" className="message-btn" value={input} onClick={sendMessage}><SendIcon /></button>
+                <input type="text" className="message-input" value={input} placeholder="Type a message" onChange={(e)=>{setInput(e.target.value)}}/>
+                <button type="submit" className="message-btn" onClick={sendMessage}><SendIcon /></button>
             </form>
         </div>
     )
