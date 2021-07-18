@@ -1,19 +1,50 @@
 import { Avatar, IconButton } from '@material-ui/core';
+import axios from 'axios';
 import SearchIcon from '@material-ui/icons/Search';
 import AttachFileIcon from '@material-ui/icons/AttachFile';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon';
 import SendIcon from '@material-ui/icons/Send';
-import React from 'react';
+import React, { useState } from 'react';
 import '../css/chat.css';
 
-function Chat() {
+function Chat({ messages }) {
+    const [input,setInput]=useState("");
+
+    const sendMessage=async(req,res)=>{
+        try {
+            if(input.trim()===""){
+                window.alert("Don't leave the input field empty!");
+            }
+            else{
+                const config={
+                    headers:{
+                        "Content-Type":"application/json"
+                    }
+                }
+                await axios.post('api/auth/createmessage',
+                    {
+                        message:input,
+                        name:"anonymous",
+                        timestamp:"just now",
+                        received:false
+                    },
+                    config
+                )
+                setInput("");
+            }
+        } catch (error) {
+            console.log(error);
+            window.alert(`Something went wrong!`);
+        }
+    }
+
     return (
         <div>
             <div className="chat-header">
-                    <IconButton>
-                        <Avatar className="chat-avatar"/>
-                    </IconButton>
+                <IconButton>
+                    <Avatar className="chat-avatar" />
+                </IconButton>
                 <div className="chat-details">
                     <h2>Name</h2>
                     <p>Last seen at...</p>
@@ -31,37 +62,21 @@ function Chat() {
                 </div>
             </div>
             <div className="chat-messages">
-                <p className="received-message">
-                    <h6 className="senders-name">Name</h6>
-                    <span className="chat-message">This is a messages ahdsashdgvsaydgausidgusaydghwefiuegrfuisegrfuipsegrieusrgeuirgeuresauiroieasrhpoiarhpoaierheapiosrhoirhsdiorheoiwarhioearhoieashrioesahroihewroihesaoirhosierhsoeirh;seoirseuirgdsriu</span>
-                    <span classsName="chats-time" style={{fontSize:"10px",marginLeft:"340px"}}>{new Date().toUTCString()}</span>
-                </p>
-                <p className="sent-message">
-                    <h6 className="senders-name">Name</h6>
-                    <span className="chat-message">This is a messages ahdsashdgvsaydgausidgus aydghwefiuegrfuisegrfuipsegrieusrgeuirgeuresauiroieasrhpoiarhpoaierheapiosrh oirhsdiorheoiwarhioearhoieashrioesahroihewroihesaoirho sierhsoeirh;seoirseuirgdsriu</span>
-                    <span classsName="chats-time" style={{fontSize:"10px",marginLeft:"340px"}}>{new Date().toUTCString()}</span>
-                </p>
-                <p className="received-message">
-                    <h6 className="senders-name">Name</h6>
-                    <span className="chat-message">This is a messages ahdsashdgvsaydgausidgusaydghwefiuegrfuisegrfuipsegrieusrgeuirgeuresauiroieasrhpoiarhpoaierheapiosrhoirhsdiorheoiwarhioearhoieashrioesahroihewroihesaoirhosierhsoeirh;seoirseuirgdsriu</span>
-                    <span classsName="chats-time" style={{fontSize:"10px",marginLeft:"340px"}}>{new Date().toUTCString()}</span>
-                </p>
-                <p className="sent-message">
-                    <h6 className="senders-name">Name</h6>
-                    <span className="chat-message">This is a messages ahdsashdgvsaydgausidgusaydghwefiuegrfuisegrfuipsegrieusrgeuirgeuresauiroieasrhpoiarhpoaierheapiosrhoirhsdiorheoiwarhioearhoieashrioesahroihewroihesaoirhosierhsoeirh;seoirseuirgdsriu</span>
-                    <span classsName="chats-time" style={{fontSize:"10px",marginLeft:"340px"}}>{new Date().toUTCString()}</span>
-                </p>
-                <p className="sent-message">
-                    <h6 className="senders-name">Name</h6>
-                    <span className="chat-message">This is a messages ahdsashdgvsaydgausidgusaydghwefiuegrfuisegrfuipsegrieusrgeuirgeuresauiroieasrhpoiarhpoaierheapiosrhoirhsdiorheoiwarhioearhoieashrioesahroihewroihesaoirhosierhsoeirh;seoirseuirgdsriu</span>
-                    <span classsName="chats-time" style={{fontSize:"10px",marginLeft:"340px"}}>{new Date().toUTCString()}</span>
-                </p>
-                
+                {
+                    messages.map((message) => {
+                        return <p className={message.received?"received-message":"sent-message"}>
+                            <h6 className="senders-name">{message.name}</h6>
+                            <span className="chat-message">{message.message}</span>
+                            <span classsName="chats-time" style={{ fontSize: "10px", marginLeft: "340px" }}>{message.timestamp}</span>
+                        </p>
+                    })
+                }
+
             </div>
             <form className="send-message-div">
-                <InsertEmoticonIcon style={{marginLeft:"20px",color:"gray"}}/>
-                <input type="text" className="message-input" placeholder="Type a message"/>
-                <button type="submit" className="message-btn"><SendIcon/></button>
+                <InsertEmoticonIcon style={{ marginLeft: "20px", color: "gray" }} />
+                <input type="text" className="message-input" placeholder="Type a message" onChange={(e)=>{setInput(e.target.value)}}/>
+                <button type="submit" className="message-btn" value={input} onClick={sendMessage}><SendIcon /></button>
             </form>
         </div>
     )
